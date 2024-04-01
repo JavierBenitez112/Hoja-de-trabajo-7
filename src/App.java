@@ -1,6 +1,8 @@
+import java.util.Scanner;
+
 import BST.Arbol;
-import BST.Nodo;
 import Diccionario.DataReader;
+import Traductor.Traductor;
 
 public class App { 
     
@@ -13,8 +15,17 @@ public class App {
         // Construir el árbol binario con los datos
         tree.construirArbol(datos);
 
-        // Prueba buscar por nombre
-        Nodo nodoHomework = tree.buscarPorNombre("homework");
-        System.out.println("Valor asociado al nodo 'homework': " + nodoHomework.V);
+        // Crear una instancia de la clase Traductor
+        Traductor traductor = new Traductor(tree);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el texto para traducir:");
+        String texto = scanner.nextLine();
+
+        String resultado = traductor.procesarCadena(texto);
+
+        System.out.println("Texto traducido:"+ resultado);
+
+        scanner.close();
     }
 }
